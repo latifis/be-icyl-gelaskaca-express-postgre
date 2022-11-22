@@ -141,16 +141,17 @@ exports.deleteAll = (req, res) => {
         });
 };
 
+// 
 // Find all published Events
-exports.findAllPublished = (req, res) => {
-    Event.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving events."
-      });
-    });
-};
+// exports.findAllPublished = (req, res) => {
+//     Event.findAll({ where: { published: true } })
+//     .then(data => {
+//       res.send(data);
+//     })
+//     .catch(err => {
+//       res.status(500).send({
+//         message:
+//           err.message || "Some error occurred while retrieving events."
+//       });
+//     });
+// };
