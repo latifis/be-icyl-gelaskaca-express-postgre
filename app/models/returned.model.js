@@ -6,9 +6,6 @@ module.exports = (sequelize, Sequelize) => {
       remain_pay: {
         type: Sequelize.INTEGER
       },
-      penalties: {
-        type: Sequelize.INTEGER
-      },
       total: {
         type: Sequelize.INTEGER
       }

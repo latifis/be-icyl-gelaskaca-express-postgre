@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const History = sequelize.define("history", {
-      invoice: {
+      name: {
         type: Sequelize.STRING
       }
     });

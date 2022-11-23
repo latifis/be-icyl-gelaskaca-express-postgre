@@ -11,6 +11,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       nominals: {
         type: Sequelize.INTEGER
+      },
+      state: {
+        type: Sequelize.INTEGER
       }
     });
   

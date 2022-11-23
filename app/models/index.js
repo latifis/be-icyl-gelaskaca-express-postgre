@@ -42,6 +42,7 @@ db.rolee = require("../models/rolee.model.js")(sequelize, Sequelize);
 db.delivery = require("../models/delivery.model.js")(sequelize, Sequelize);
 db.payment = require("../models/payment.model.js")(sequelize, Sequelize);
 db.history = require("../models/history.model.js")(sequelize, Sequelize);
+db.historyStatus = require("../models/historyStatus.model.js")(sequelize, Sequelize);
 db.returned = require("../models/returned.model.js")(sequelize, Sequelize);
 db.verification = require("../models/verification.model.js")(sequelize, Sequelize);
 
@@ -156,6 +157,13 @@ db.history.belongsTo(db.userr, {
   as: "userr",
 });
 
+// history and historyStatus
+db.historyStatus.hasMany(db.history, { as: "historys" });
+db.history.belongsTo(db.historyStatus, {
+  foreignKey: "historyStatusId",
+  as: "historyStatus",
+});
+
 // user and returned
 db.userr.hasOne(db.returned, {as: "returneds"});
 db.returned.belongsTo(db.userr, {
@@ -191,6 +199,7 @@ db.payment.belongsTo(db.userr, {
   as: "userr",
 });
 
+// sign
 // user and account
 db.userr.hasOne(db.account, {as: "accounts"});
 db.account.belongsTo(db.userr, {
@@ -205,6 +214,7 @@ db.delivery.belongsTo(db.userr, {
   as: "userr",
 });
 
+// sign
 // role and account
 db.rolee.hasMany(db.account, { as: "accounts" });
 db.account.belongsTo(db.rolee, {
@@ -212,6 +222,18 @@ db.account.belongsTo(db.rolee, {
   as: "rolee",
 });
 
+// verification and payment
+db.verification.hasOne(db.payment, {as: "payments"});
+db.payment.belongsTo(db.verification, {
+  foreignKey: "verificationId",
+  as: "verification",
+});
 
+// verification and paymentProof
+db.verification.hasOne(db.paymentProof, {as: "paymentProofs"});
+db.paymentProof.belongsTo(db.verification, {
+  foreignKey: "verificationId",
+  as: "verification",
+});
 
 module.exports = db;
