@@ -13,7 +13,7 @@ const Role = db.role;
 // });
 
 //for production
-//db.sequelize.sync();
+// db.sequelize.sync();
 db.sequelize.sync()
   .then(() => {
     console.log("Synced db.");
