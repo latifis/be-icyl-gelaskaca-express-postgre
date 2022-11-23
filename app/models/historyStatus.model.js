@@ -1,9 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
-    const History = sequelize.define("history", {
+    const HistoryStatus = sequelize.define("historyStatus", {
       name: {
         type: Sequelize.STRING
       }
     });
   
-    return History;
+    return HistoryStatus;
   };
