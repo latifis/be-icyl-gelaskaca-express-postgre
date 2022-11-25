@@ -136,12 +136,13 @@ db.cart.belongsTo(db.user, {
   as: "user",
 });
 
+// deleted
 // user and category
-db.user.hasMany(db.category, { as: "categorys" });
-db.category.belongsTo(db.user, {
-  foreignKey: "userrId",
-  as: "user",
-});
+// db.user.hasMany(db.category, { as: "categorys" });
+// db.category.belongsTo(db.user, {
+//   foreignKey: "userrId",
+//   as: "user",
+// });
 
 // user and voucher
 db.user.hasOne(db.voucher, {as: "vouchers"});
