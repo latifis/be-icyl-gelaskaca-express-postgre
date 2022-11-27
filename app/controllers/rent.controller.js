@@ -1,8 +1,8 @@
 const db = require("../models");
-const Cart = db.cart;
+const Rent = db.rent;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Category
+// Create and Save a new Rent
 exports.create = (req, res) => {
   
     // // Validate request
@@ -12,78 +12,81 @@ exports.create = (req, res) => {
     //     });
     //     return;
     // }
-
-    // Create a Category
-    const cart = {
-        qty: req.body.qty,
-        rentId: req.body.rentId,
-        userId: req.body.userId
+    
+    // Create a Rent
+    const rent = {
+        address: req.body.address,
+        rent_start: req.body.rent_start,
+        rent_end: req.body.rent_end,
+        state: req.body.state,
+        userId: req.body.userId,
+        paymentId: req.body.paymentId,
     };
 
-    // Save Category in the database
-    Cart.create(cart)
+    // Save Rent in the database
+    Rent.create(rent)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Cart."
+                    err.message || "Some error occurred while creating the Rent."
             });
         });
 };
 
-// Retrieve all Carts from the database.
+// Retrieve all Rent from the database.
 exports.findAll = (req, res) => {
    
-    Cart.findAll({ where: condition })
+    Rent.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving carts."
+            err.message || "Some error occurred while retrieving rents."
         });
       });
 };
 
-// Find a single Carts with an id
+// Find a single Rents with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Cart.findByPk(id)
+    Rent.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Cart with id=${id}.`
+            message: `Cannot find Rent with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Cart with id=" + id
+          message: "Error retrieving Rent with id=" + id
         });
       });
 };
 
-// Update a Cart by the id in the request
+// Update a Rent by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Cart.update(req.body, {
+    Rent.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Cart was updated successfully."
+            message: "Rent was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Cart with id=${id}. Maybe Cart was not found or req.body is empty!`
+            message: `Cannot update Rent with id=${id}. Maybe Rent was not found or req.body is empty!`
           });
         }
       })
@@ -94,27 +97,27 @@ exports.update = (req, res) => {
       });
 };
 
-// Delete a Cart with the specified id in the request
+// Delete a Rent with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Cart.destroy({
+    Rent.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Cart was deleted successfully!"
+            message: "Rent was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Cart with id=${id}. Maybe Cart was not found!`
+            message: `Cannot delete Rent with id=${id}. Maybe Rent was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Cart with id=" + id
+          message: "Could not delete Rent with id=" + id
         });
       });
 };

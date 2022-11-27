@@ -4,10 +4,12 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       rent_start: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
+        //date
       },
       rent_end: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
+        //date
       },
       state: {
         type: Sequelize.INTEGER

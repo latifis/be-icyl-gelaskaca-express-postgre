@@ -118,21 +118,21 @@ db.returned.belongsTo(db.rent, {
 // user and rent
 db.user.hasMany(db.rent, { as: "rents" });
 db.rent.belongsTo(db.user, {
-  foreignKey: "userrId",
+  foreignKey: "userId",
   as: "user",
 });
 
 // user and paymentProof
 db.user.hasOne(db.paymentProof, {as: "paymentProofs"});
 db.paymentProof.belongsTo(db.user, {
-  foreignKey: "userrId",
+  foreignKey: "userId",
   as: "user",
 });
 
 // user and cart
 db.user.hasOne(db.cart, {as: "carts"});
 db.cart.belongsTo(db.user, {
-  foreignKey: "userrId",
+  foreignKey: "userId",
   as: "user",
 });
 
@@ -140,21 +140,21 @@ db.cart.belongsTo(db.user, {
 // user and category
 // db.user.hasMany(db.category, { as: "categorys" });
 // db.category.belongsTo(db.user, {
-//   foreignKey: "userrId",
+//   foreignKey: "userId",
 //   as: "user",
 // });
 
 // user and voucher
 db.user.hasOne(db.voucher, {as: "vouchers"});
 db.voucher.belongsTo(db.user, {
-  foreignKey: "userrId",
+  foreignKey: "userId",
   as: "user",
 });
 
 // user and history
 db.user.hasOne(db.history, {as: "historys"});
 db.history.belongsTo(db.user, {
-  foreignKey: "userrId",
+  foreignKey: "userId",
   as: "user",
 });
 
@@ -168,7 +168,7 @@ db.history.belongsTo(db.historyStatus, {
 // user and returned
 db.user.hasOne(db.returned, {as: "returneds"});
 db.returned.belongsTo(db.user, {
-  foreignKey: "userrId",
+  foreignKey: "userId",
   as: "user",
 });
 
@@ -196,7 +196,7 @@ db.rent.belongsTo(db.payment, {
 // user and payment
 db.user.hasOne(db.payment, {as: "payments"});
 db.payment.belongsTo(db.user, {
-  foreignKey: "userrId",
+  foreignKey: "userId",
   as: "user",
 });
 
@@ -204,14 +204,14 @@ db.payment.belongsTo(db.user, {
 // user and account
 // db.user.hasOne(db.account, {as: "accounts"});
 // db.account.belongsTo(db.user, {
-//   foreignKey: "userrId",
+//   foreignKey: "userId",
 //   as: "user",
 // });
 
 // user and delivery
 db.user.hasOne(db.delivery, {as: "deliverys"});
 db.delivery.belongsTo(db.user, {
-  foreignKey: "userrId",
+  foreignKey: "userId",
   as: "user",
 });
 
