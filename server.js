@@ -7,10 +7,10 @@ const app = express();
 const db = require("./app/models");
 const Role = db.role;
 
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Db');
-  initial();
-});
+// db.sequelize.sync({force: true}).then(() => {
+//   console.log('Drop and Resync Db');
+//   initial();
+// });
 
 //for production
 // db.sequelize.sync();
@@ -47,6 +47,8 @@ require('./app/routes/category.routes')(app);
 require('./app/routes/product.routes')(app);
 require('./app/routes/cart.routes')(app);
 require('./app/routes/rent.routes')(app);
+require('./app/routes/payment.routes')(app);
+require('./app/routes/verification.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

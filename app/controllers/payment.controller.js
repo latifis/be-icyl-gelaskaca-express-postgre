@@ -1,8 +1,8 @@
 const db = require("../models");
-const Rent = db.rent;
+const Payment = db.payment;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Rent
+// Create and Save a new Payment
 exports.create = (req, res) => {
   
     // // Validate request
@@ -13,111 +13,110 @@ exports.create = (req, res) => {
     //     return;
     // }
     
-    // Create a Rent
-    const rent = {
-        address: req.body.address,
-        rent_start: req.body.rent_start,
-        rent_end: req.body.rent_end,
-        state: req.body.state,
+    // Create a Payment
+    const payment = {
+        method: req.body.method,
+        total_product: req.body.total_product,
+        total_all: req.body.total_all,
         userId: req.body.userId,
-        paymentId: req.body.paymentId,
+        verificationId: req.body.verificationId
     };
 
-    // Save Rent in the database
-    Rent.create(rent)
+    // Save Payment in the database
+    Payment.create(payment)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Rent."
+                    err.message || "Some error occurred while creating the Payment."
             });
         });
 };
 
-// Retrieve all Rent from the database.
+// Retrieve all Payment from the database.
 exports.findAll = (req, res) => {
    
-    Rent.findAll()
+    Payment.findAll()
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving rents."
+            err.message || "Some error occurred while retrieving payments."
         });
       });
 };
 
-// Find a single Rents with an id
+// Find a single Payments with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Rent.findByPk(id)
+    Payment.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Rent with id=${id}.`
+            message: `Cannot find Payment with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Rent with id=" + id
+          message: "Error retrieving Payment with id=" + id
         });
       });
 };
 
-// Update a Rent by the id in the request
+// Update a Payment by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Rent.update(req.body, {
+    Payment.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Rent was updated successfully."
+            message: "Payment was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Rent with id=${id}. Maybe Rent was not found or req.body is empty!`
+            message: `Cannot update Payment with id=${id}. Maybe Rent was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Rent with id=" + id
+          message: "Error updating Payment with id=" + id
         });
       });
 };
 
-// Delete a Rent with the specified id in the request
+// Delete a Payment with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Rent.destroy({
+    Payment.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Rent was deleted successfully!"
+            message: "Payment was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Rent with id=${id}. Maybe Rent was not found!`
+            message: `Cannot delete Payment with id=${id}. Maybe Payment was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Rent with id=" + id
+          message: "Could not delete Payment with id=" + id
         });
       });
 };

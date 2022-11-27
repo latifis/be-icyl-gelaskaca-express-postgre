@@ -33,10 +33,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Categorys from the database.
 exports.findAll = (req, res) => {
-    const name = req.query.name;
-    var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
   
-    Category.findAll({ where: condition })
+    Category.findAll()
       .then(data => {
         res.send(data);
       })

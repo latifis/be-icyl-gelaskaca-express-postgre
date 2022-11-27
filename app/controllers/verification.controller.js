@@ -1,5 +1,5 @@
 const db = require("../models");
-const Rent = db.rent;
+const Verification = db.verification;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Rent
@@ -13,111 +13,106 @@ exports.create = (req, res) => {
     //     return;
     // }
     
-    // Create a Rent
-    const rent = {
-        address: req.body.address,
-        rent_start: req.body.rent_start,
-        rent_end: req.body.rent_end,
-        state: req.body.state,
-        userId: req.body.userId,
-        paymentId: req.body.paymentId,
+    // Create a Verification
+    const verification = {
+        status: req.body.status
     };
 
-    // Save Rent in the database
-    Rent.create(rent)
+    // Save Verification in the database
+    Verification.create(verification)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Rent."
+                    err.message || "Some error occurred while creating the Verification."
             });
         });
 };
 
-// Retrieve all Rent from the database.
+// Retrieve all Verification from the database.
 exports.findAll = (req, res) => {
    
-    Rent.findAll()
+    Verification.findAll()
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving rents."
+            err.message || "Some error occurred while retrieving verifications."
         });
       });
 };
 
-// Find a single Rents with an id
+// Find a single Verifications with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Rent.findByPk(id)
+    Verification.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Rent with id=${id}.`
+            message: `Cannot find Verification with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Rent with id=" + id
+          message: "Error retrieving Verification with id=" + id
         });
       });
 };
 
-// Update a Rent by the id in the request
+// Update a Verification by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Rent.update(req.body, {
+    Verification.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Rent was updated successfully."
+            message: "Verification was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Rent with id=${id}. Maybe Rent was not found or req.body is empty!`
+            message: `Cannot update Verification with id=${id}. Maybe Verification was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Rent with id=" + id
+          message: "Error updating Verification with id=" + id
         });
       });
 };
 
-// Delete a Rent with the specified id in the request
+// Delete a Verification with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Rent.destroy({
+    Verification.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Rent was deleted successfully!"
+            message: "Verification was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Rent with id=${id}. Maybe Rent was not found!`
+            message: `Cannot delete Verification with id=${id}. Maybe Verification was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Rent with id=" + id
+          message: "Could not delete Verification with id=" + id
         });
       });
 };

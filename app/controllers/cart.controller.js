@@ -36,7 +36,7 @@ exports.create = (req, res) => {
 // Retrieve all Carts from the database.
 exports.findAll = (req, res) => {
    
-    Cart.findAll({ where: condition })
+    Cart.findAll()
       .then(data => {
         res.send(data);
       })
