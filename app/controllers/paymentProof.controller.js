@@ -1,8 +1,8 @@
 const db = require("../models");
-const Payment = db.payment;
+const PaymentProof = db.paymentProof;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Payment
+// Create and Save a new PaymentProof
 exports.create = (req, res) => {
   
     // // Validate request
@@ -13,110 +13,113 @@ exports.create = (req, res) => {
     //     return;
     // }
     
-    // Create a Payment
-    const payment = {
-        method: req.body.method,
-        total_product: req.body.total_product,
-        total_all: req.body.total_all,
+    // Create a PaymentProof
+    const paymentProof = {
+        name: req.body.name,
+        date: req.body.date,
+        bank: req.body.total_all,
+        nominals: req.body.nominals,
+        state: req.body.state,
+        rentId:req.body.rentId,
         userId: req.body.userId,
         verificationId: req.body.verificationId
     };
 
     // Save Payment in the database
-    Payment.create(payment)
+    PaymentProof.create(paymentProof)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Payment."
+                    err.message || "Some error occurred while creating the PaymentProof."
             });
         });
 };
 
-// Retrieve all Payment from the database.
+// Retrieve all PaymentProof from the database.
 exports.findAll = (req, res) => {
    
-    Payment.findAll()
+    PaymentProof.findAll()
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving payments."
+            err.message || "Some error occurred while retrieving paymentProof."
         });
       });
 };
 
-// Find a single Payments with an id
+// Find a single PaymentProofs with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Payment.findByPk(id)
+    PaymentProof.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Payment with id=${id}.`
+            message: `Cannot find PaymentProof with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Payment with id=" + id
+          message: "Error retrieving PaymentProof with id=" + id
         });
       });
 };
 
-// Update a Payment by the id in the request
+// Update a PaymentProof by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Payment.update(req.body, {
+    PaymentProof.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Payment was updated successfully."
+            message: "PaymentProof was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Payment with id=${id}. Maybe Payment was not found or req.body is empty!`
+            message: `Cannot update PaymentProof with id=${id}. Maybe PaymentProof was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Payment with id=" + id
+          message: "Error updating PaymentProof with id=" + id
         });
       });
 };
 
-// Delete a Payment with the specified id in the request
+// Delete a PaymentProof with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Payment.destroy({
+    PaymentProof.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Payment was deleted successfully!"
+            message: "PaymentProof was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Payment with id=${id}. Maybe Payment was not found!`
+            message: `Cannot delete PaymentProof with id=${id}. Maybe PaymentProof was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Payment with id=" + id
+          message: "Could not delete PaymentProof with id=" + id
         });
       });
 };

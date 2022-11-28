@@ -1,8 +1,8 @@
 const db = require("../models");
-const Payment = db.payment;
+const Voucher = db.voucher;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Payment
+// Create and Save a new Voucher
 exports.create = (req, res) => {
   
     // // Validate request
@@ -13,110 +13,109 @@ exports.create = (req, res) => {
     //     return;
     // }
     
-    // Create a Payment
-    const payment = {
-        method: req.body.method,
-        total_product: req.body.total_product,
-        total_all: req.body.total_all,
+    // Create a Voucher
+    const voucher = {
+        name: req.body.name,
+        discount: req.body.discount,
         userId: req.body.userId,
-        verificationId: req.body.verificationId
+        paymentId: req.body.paymentId,
     };
 
-    // Save Payment in the database
-    Payment.create(payment)
+    // Save Voucher in the database
+    Voucher.create(voucher)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Payment."
+                    err.message || "Some error occurred while creating the Voucher."
             });
         });
 };
 
-// Retrieve all Payment from the database.
+// Retrieve all Voucher from the database.
 exports.findAll = (req, res) => {
    
-    Payment.findAll()
+    Voucher.findAll()
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving payments."
+            err.message || "Some error occurred while retrieving vouchers."
         });
       });
 };
 
-// Find a single Payments with an id
+// Find a single Vouchers with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Payment.findByPk(id)
+    Voucher.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Payment with id=${id}.`
+            message: `Cannot find Voucher with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Payment with id=" + id
+          message: "Error retrieving Voucher with id=" + id
         });
       });
 };
 
-// Update a Payment by the id in the request
+// Update a Voucher by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Payment.update(req.body, {
+    Voucher.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Payment was updated successfully."
+            message: "Voucher was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Payment with id=${id}. Maybe Payment was not found or req.body is empty!`
+            message: `Cannot update Voucher with id=${id}. Maybe Voucher was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Payment with id=" + id
+          message: "Error updating Voucher with id=" + id
         });
       });
 };
 
-// Delete a Payment with the specified id in the request
+// Delete a Voucher with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Payment.destroy({
+    Voucher.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Payment was deleted successfully!"
+            message: "Voucher was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Payment with id=${id}. Maybe Payment was not found!`
+            message: `Cannot delete Voucher with id=${id}. Maybe Voucher was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Payment with id=" + id
+          message: "Could not delete Voucher with id=" + id
         });
       });
 };
