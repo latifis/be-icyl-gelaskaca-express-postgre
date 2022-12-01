@@ -29,6 +29,26 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      cartId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "carts",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "categories",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
     });
   },
 

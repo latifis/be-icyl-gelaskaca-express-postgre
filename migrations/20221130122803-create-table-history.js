@@ -21,6 +21,36 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      rentId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "rents",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      historyStatusId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "historyStatuses",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
     });
   },
 
