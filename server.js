@@ -2,6 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+// env
+const dotenv = require('dotenv');
+dotenv.config();
+
 const app = express();
 
 const db = require("./app/models");
@@ -23,7 +27,7 @@ db.sequelize.sync()
   });
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8000"
 };
 
 app.use(cors(corsOptions));
