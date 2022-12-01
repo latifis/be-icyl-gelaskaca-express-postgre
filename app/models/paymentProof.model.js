@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DATE
       },
       bank: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       nominals: {
         type: Sequelize.INTEGER
