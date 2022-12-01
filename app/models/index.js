@@ -87,33 +87,41 @@ db.product.belongsTo(db.category, {
   as: "category",
 });
 
-// rent and cart
-db.rent.hasOne(db.cart, {as: "carts"});
-db.cart.belongsTo(db.rent, {
-  foreignKey: "rentId",
-  as: "rent",
-});
+// // rent and cart
+// db.rent.hasOne(db.cart, {as: "carts"});
+// db.cart.belongsTo(db.rent, {
+//   foreignKey: "rentId",
+//   as: "rent",
+// });
+db.cart.hasOne(db.rent);
+db.rent.belongsTo(db.cart);
 
-// rent and paymentProof
-db.rent.hasOne(db.paymentProof, {as: "paymentProofs"});
-db.paymentProof.belongsTo(db.rent, {
-  foreignKey: "rentId",
-  as: "rent",
-});
+// // rent and paymentProof
+// db.rent.hasOne(db.paymentProof, {as: "paymentProofs"});
+// db.paymentProof.belongsTo(db.rent, {
+//   foreignKey: "rentId",
+//   as: "rent",
+// });
+db.rent.hasOne(db.paymentProof);
+db.paymentProof.belongsTo(db.rent);
 
-// rent and history
-db.rent.hasOne(db.history, {as: "historys"});
-db.history.belongsTo(db.rent, {
-  foreignKey: "rentId",
-  as: "rent",
-});
+// // rent and history
+// db.rent.hasOne(db.history, {as: "historys"});
+// db.history.belongsTo(db.rent, {
+//   foreignKey: "rentId",
+//   as: "rent",
+// });
+db.rent.hasOne(db.history);
+db.history.belongsTo(db.rent);
 
-// rent and returned
-db.rent.hasOne(db.returned, {as: "returneds"});
-db.returned.belongsTo(db.rent, {
-  foreignKey: "rentId",
-  as: "rent",
-});
+// // rent and returned
+// db.rent.hasOne(db.returned, {as: "returneds"});
+// db.returned.belongsTo(db.rent, {
+//   foreignKey: "rentId",
+//   as: "rent",
+// });
+db.rent.hasOne(db.returned);
+db.returned.belongsTo(db.rent);
 
 // user and rent
 db.user.hasMany(db.rent, { as: "rents" });
@@ -122,19 +130,23 @@ db.rent.belongsTo(db.user, {
   as: "user",
 });
 
-// user and paymentProof
-db.user.hasOne(db.paymentProof, {as: "paymentProofs"});
-db.paymentProof.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
+// // user and paymentProof
+// db.user.hasOne(db.paymentProof, {as: "paymentProofs"});
+// db.paymentProof.belongsTo(db.user, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+db.user.hasOne(db.paymentProof);
+db.paymentProof.belongsTo(db.user);
 
-// user and cart
-db.user.hasOne(db.cart, {as: "carts"});
-db.cart.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
+// // user and cart
+// db.user.hasOne(db.cart, {as: "carts"});
+// db.cart.belongsTo(db.user, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+db.user.hasOne(db.cart);
+db.cart.belongsTo(db.user);
 
 // deleted
 // user and category
@@ -144,19 +156,23 @@ db.cart.belongsTo(db.user, {
 //   as: "user",
 // });
 
-// user and voucher
-db.user.hasOne(db.voucher, {as: "vouchers"});
-db.voucher.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
+// // user and voucher
+// db.user.hasOne(db.voucher, {as: "vouchers"});
+// db.voucher.belongsTo(db.user, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+db.user.hasOne(db.voucher);
+db.voucher.belongsTo(db.user);
 
-// user and history
-db.user.hasOne(db.history, {as: "historys"});
-db.history.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
+// // user and history
+// db.user.hasOne(db.history, {as: "historys"});
+// db.history.belongsTo(db.user, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+db.user.hasOne(db.history);
+db.history.belongsTo(db.user);
 
 // history and historyStatus
 db.historyStatus.hasMany(db.history, { as: "historys" });
@@ -165,40 +181,50 @@ db.history.belongsTo(db.historyStatus, {
   as: "historyStatus",
 });
 
-// user and returned
-db.user.hasOne(db.returned, {as: "returneds"});
-db.returned.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
+// // user and returned
+// db.user.hasOne(db.returned, {as: "returneds"});
+// db.returned.belongsTo(db.user, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+db.user.hasOne(db.returned);
+db.returned.belongsTo(db.user);
 
-// payment and voucher
-db.payment.hasOne(db.voucher, {as: "vouchers"});
-db.voucher.belongsTo(db.payment, {
-  foreignKey: "paymentId",
-  as: "payment",
-});
+// // payment and voucher
+// db.payment.hasOne(db.voucher, {as: "vouchers"});
+// db.voucher.belongsTo(db.payment, {
+//   foreignKey: "paymentId",
+//   as: "payment",
+// });
+db.payment.hasOne(db.voucher);
+db.voucher.belongsTo(db.payment);
 
-// payment and delivery
-db.payment.hasOne(db.delivery, {as: "deliverys"});
-db.delivery.belongsTo(db.payment, {
-  foreignKey: "paymentId",
-  as: "payment",
-});
+// // payment and delivery
+// db.payment.hasOne(db.delivery, {as: "deliverys"});
+// db.delivery.belongsTo(db.payment, {
+//   foreignKey: "paymentId",
+//   as: "payment",
+// });
+db.payment.hasOne(db.delivery);
+db.delivery.belongsTo(db.payment);
 
-// payment and rent
-db.payment.hasOne(db.rent, {as: "rents"});
-db.rent.belongsTo(db.payment, {
-  foreignKey: "paymentId",
-  as: "payment",
-});
+// // payment and rent
+// db.payment.hasOne(db.rent, {as: "rents"});
+// db.rent.belongsTo(db.payment, {
+//   foreignKey: "paymentId",
+//   as: "payment",
+// });
+db.payment.hasOne(db.rent);
+db.rent.belongsTo(db.payment);
 
-// user and payment
-db.user.hasOne(db.payment, {as: "payments"});
-db.payment.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
+// // user and payment
+// db.user.hasOne(db.payment, {as: "payments"});
+// db.payment.belongsTo(db.user, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+db.user.hasOne(db.payment);
+db.payment.belongsTo(db.user);
 
 // sign
 // user and account
@@ -208,12 +234,14 @@ db.payment.belongsTo(db.user, {
 //   as: "user",
 // });
 
-// user and delivery
-db.user.hasOne(db.delivery, {as: "deliverys"});
-db.delivery.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
+// // user and delivery
+// db.user.hasOne(db.delivery, {as: "deliverys"});
+// db.delivery.belongsTo(db.user, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+db.user.hasOne(db.delivery);
+db.delivery.belongsTo(db.user);
 
 // sign
 // role and account
@@ -223,18 +251,22 @@ db.delivery.belongsTo(db.user, {
 //   as: "rolee",
 // });
 
-// verification and payment
-db.verification.hasOne(db.payment, {as: "payments"});
-db.payment.belongsTo(db.verification, {
-  foreignKey: "verificationId",
-  as: "verification",
-});
+// // verification and payment
+// db.verification.hasOne(db.payment, {as: "payments"});
+// db.payment.belongsTo(db.verification, {
+//   foreignKey: "verificationId",
+//   as: "verification",
+// });
+db.verification.hasOne(db.payment);
+db.payment.belongsTo(db.verification);
 
-// verification and paymentProof
-db.verification.hasOne(db.paymentProof, {as: "paymentProofs"});
-db.paymentProof.belongsTo(db.verification, {
-  foreignKey: "verificationId",
-  as: "verification",
-});
+// // verification and paymentProof
+// db.verification.hasOne(db.paymentProof, {as: "paymentProofs"});
+// db.paymentProof.belongsTo(db.verification, {
+//   foreignKey: "verificationId",
+//   as: "verification",
+// });
+db.verification.hasOne(db.paymentProof);
+db.paymentProof.belongsTo(db.verification);
 
 module.exports = db;
