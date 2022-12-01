@@ -20,6 +20,7 @@ exports.create = (req, res) => {
         rent_end: req.body.rent_end,
         state: req.body.state,
         userId: req.body.userId,
+        cartId: req.body.cartId,
         paymentId: req.body.paymentId,
     };
 

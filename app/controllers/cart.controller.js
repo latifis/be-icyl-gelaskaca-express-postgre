@@ -16,7 +16,6 @@ exports.create = (req, res) => {
     // Create a Category
     const cart = {
         qty: req.body.qty,
-        rentId: req.body.rentId,
         userId: req.body.userId
     };
 
