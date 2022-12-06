@@ -45,6 +45,7 @@ db.history = require("../models/history.model.js")(sequelize, Sequelize);
 db.historyStatus = require("../models/historyStatus.model.js")(sequelize, Sequelize);
 db.returned = require("../models/returned.model.js")(sequelize, Sequelize);
 db.verification = require("../models/verification.model.js")(sequelize, Sequelize);
+db.productGallery = require("../models/productGallery.model.js")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "accounts",
@@ -268,5 +269,12 @@ db.payment.belongsTo(db.verification);
 // });
 db.verification.hasOne(db.paymentProof);
 db.paymentProof.belongsTo(db.verification);
+
+// product and productGallery
+db.product.hasMany(db.productGallery, { as: "productGalleries" });
+db.productGallery.belongsTo(db.product, {
+  foreignKey: "productId",
+  as: "product",
+});
 
 module.exports = db;
