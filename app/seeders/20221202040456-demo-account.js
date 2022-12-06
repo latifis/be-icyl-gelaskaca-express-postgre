@@ -41,13 +41,6 @@ module.exports = {
         roleId: 1
       },
       {
-        id: 1,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        userId: 6,
-        roleId: 2
-      },
-      {
         id: 5,
         createdAt: new Date(),
         updatedAt: new Date(),
