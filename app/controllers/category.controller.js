@@ -15,7 +15,8 @@ exports.create = (req, res) => {
 
     // Create a Category
     const category = {
-        name: req.body.name
+        name: req.body.name,
+        image: req.body.image
     };
 
     // Save Category in the database
