@@ -17,6 +17,7 @@ module.exports = {
         qty: 20,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -24,6 +25,7 @@ module.exports = {
         qty: 420,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -31,6 +33,7 @@ module.exports = {
         qty: 200,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -38,6 +41,7 @@ module.exports = {
         qty: 240,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -45,6 +49,7 @@ module.exports = {
         qty: 90,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -52,6 +57,7 @@ module.exports = {
         qty: 990,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -59,6 +65,7 @@ module.exports = {
         qty: 290,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -66,6 +73,7 @@ module.exports = {
         qty: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -73,6 +81,7 @@ module.exports = {
         qty: 5,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -80,6 +89,7 @@ module.exports = {
         qty: 12,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
       {
@@ -87,6 +97,7 @@ module.exports = {
         qty: 89,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productId: 1,
         userId: 1
       },
     ]);

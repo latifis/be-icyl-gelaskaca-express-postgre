@@ -19,7 +19,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 1,
         categoryId: 1
       },
       {
@@ -29,7 +28,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 3,
         categoryId: 1
       },
       {
@@ -39,7 +37,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 1,
         categoryId: 1
       },
       {
@@ -49,7 +46,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 2,
         categoryId: 1
       },
       {
@@ -59,7 +55,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 2,
         categoryId: 1
       },
       {
@@ -69,7 +64,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 4,
         categoryId: 1
       },
       {
@@ -79,7 +73,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 5,
         categoryId: 1
       },
       {
@@ -89,7 +82,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 3,
         categoryId: 1
       },
       {
@@ -99,7 +91,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 2,
         categoryId: 1
       },
       {
@@ -109,7 +100,6 @@ module.exports = {
         desc: "NO-DESC",
         createdAt: new Date(),
         updatedAt: new Date(),
-        cartId: 6,
         categoryId: 1
       },
     ]);
