@@ -32,54 +32,6 @@ exports.create = (req, res) => {
   Product.create(product)
     .then(data => {
       res.send(data);
-
-      // jwt.verify(token, config.secret, (err, decoded) => {
-      //   if (err) {
-      //     return res.status(401).send({
-      //       message: "Unauthorized!"
-      //     });
-      //   }
-      //   // req.userId = decoded.id;
-    
-      //   // Create a Cart
-      //   const cart = {
-      //     qty: req.body.qty || 1,
-      //     userId: decoded.id,
-      //     productId: data.id
-      //   };
-      //   // next();
-    
-      //   Cart.create(cart)
-      //     .then(data => {
-      //       res.send(data);
-      //       // Product.update({"cartId" : 1},{
-      //       //   where: { id: data.id }
-      //       // })
-      //       //   .then(num => {
-      //       //     if (num == 1) {
-      //       //       res.send({
-      //       //         message: "Product was updated successfully."
-      //       //       });
-      //       //     } else {
-      //       //       res.send({
-      //       //         message: `Cannot update Product with id=${id}. Maybe Product was not found or req.body is empty!`
-      //       //       });
-      //       //     }
-      //       //   })
-      //       //   .catch(err => {
-      //       //     res.status(500).send({
-      //       //       message: "Error updating Product with id=" + id
-      //       //     });
-      //       //   });
-      //     })
-      //     .catch(err => {
-      //       res.status(500).send({
-      //         message:
-      //           err.message || "Some error occurred while creating the Cart."
-      //       });
-      //     });
-      // });
-
     })
     .catch(err => {
       res.status(500).send({
