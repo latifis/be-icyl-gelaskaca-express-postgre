@@ -1,5 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
     const Rent = sequelize.define("rent", {
+      order_num: {
+        type: Sequelize.STRING
+      },
       address: {
         type: Sequelize.STRING
       },
