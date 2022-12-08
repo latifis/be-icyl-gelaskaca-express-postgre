@@ -27,6 +27,9 @@ module.exports = app => {
   
     // Delete a Cart with id
     router.delete("/:id", carts.delete);
+
+    // Find User id
+    router.get("/findcart/:id", carts.finduserid);
   
     app.use('/api/carts', router);
     // [authJwt.verifyToken, authJwt.isPic],
