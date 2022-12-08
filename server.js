@@ -11,10 +11,10 @@ const app = express();
 const db = require("./app/models");
 const Role = db.role;
 
-// db.sequelize.sync({force: true}).then(() => {
-//   console.log('Drop and Resync Db');
-//   initial();
-// });
+db.sequelize.sync({force: true}).then(() => {
+  console.log('Drop and Resync Db');
+  initial();
+});
 
 //for production
 // db.sequelize.sync();
@@ -31,7 +31,7 @@ var corsOptions = {
 };
 
 
-app.use(cors(corsOptions));
+app.use(cors());
 // app.use();
 
 // parse requests of content-type - application/json
