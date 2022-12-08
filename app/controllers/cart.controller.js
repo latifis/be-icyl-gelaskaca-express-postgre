@@ -2,7 +2,7 @@ const db = require("../models");
 const Cart = db.cart;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Category
+// Create and Save a new Cart
 exports.create = (req, res) => {
   
     // // Validate request
@@ -13,13 +13,14 @@ exports.create = (req, res) => {
     //     return;
     // }
 
-    // Create a Category
+    // Create a Cart
     const cart = {
         qty: req.body.qty,
+        productId: req.body.productId,
         userId: req.body.userId
     };
 
-    // Save Category in the database
+    // Save Cart in the database
     Cart.create(cart)
         .then(data => {
             res.send(data);

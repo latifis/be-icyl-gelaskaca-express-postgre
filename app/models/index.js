@@ -75,10 +75,10 @@ db.stock.belongsTo(db.product, {
 });
 
 // product and cart
-db.cart.hasMany(db.product, { as: "products" });
-db.product.belongsTo(db.cart, {
-  foreignKey: "cartId",
-  as: "cart",
+db.product.hasMany(db.cart, { as: "carts" });
+db.cart.belongsTo(db.product, {
+  foreignKey: "productId",
+  as: "product",
 });
 
 // product and category
@@ -142,6 +142,11 @@ db.paymentProof.belongsTo(db.user);
 
 // // user and cart
 // db.user.hasOne(db.cart, {as: "carts"});
+// db.cart.belongsTo(db.user, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+// db.user.hasMany(db.cart, { as: "carts" });
 // db.cart.belongsTo(db.user, {
 //   foreignKey: "userId",
 //   as: "user",
