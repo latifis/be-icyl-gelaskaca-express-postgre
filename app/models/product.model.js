@@ -3,6 +3,9 @@ module.exports = (sequelize, Sequelize) => {
       name: {
         type: Sequelize.STRING
       },
+      brand: {
+        type: Sequelize.STRING
+      },
       price: {
         type: Sequelize.INTEGER
       },
