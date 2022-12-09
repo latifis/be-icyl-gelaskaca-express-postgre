@@ -47,7 +47,12 @@ exports.findAll = (req, res) => {
   const name = req.query.name;
   var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
 
-  Product.findAll({ where: condition })
+  Product.findAll({ 
+    include: [
+      "carts",
+      "productGalleries"
+    ] 
+  })
     .then(data => {
       res.send(data);
     })

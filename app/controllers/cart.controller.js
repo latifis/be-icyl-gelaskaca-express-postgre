@@ -1,5 +1,6 @@
 const db = require("../models");
 const Cart = db.cart;
+const Product = db.product;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Cart
@@ -37,6 +38,13 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
 
   Cart.findAll()
+  // { 
+  //   include: [
+  //     "users"
+  //   ] 
+  // }
+    // Product.findAll()
+
     .then(data => {
       res.send(data);
     })

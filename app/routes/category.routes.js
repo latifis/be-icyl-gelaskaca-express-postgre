@@ -1,5 +1,7 @@
 const { authJwt } = require("../middleware");
 const categorys = require("../controllers/category.controller.js");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 module.exports = app => {
   
@@ -30,6 +32,9 @@ module.exports = app => {
   
     // Delete a Category with id
     router.delete("/:id", categorys.delete);
+
+    // // Delete a Category with id
+    // router.post("/upload_files", categorys.uploadFiles);
   
     // // Create a new Category
     // router.delete("/", events.deleteAll);
