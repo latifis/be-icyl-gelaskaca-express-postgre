@@ -75,10 +75,10 @@ db.stock.belongsTo(db.product, {
 });
 
 // product and cart
-db.product.hasMany(db.cart, { as: "carts" });
-db.cart.belongsTo(db.product, {
-  foreignKey: "productId",
-  as: "product",
+db.cart.hasMany(db.product, { as: "products" });
+db.product.belongsTo(db.cart, {
+  foreignKey: "cartId",
+  as: "cart",
 });
 
 // product and category

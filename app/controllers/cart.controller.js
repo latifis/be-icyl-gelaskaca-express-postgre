@@ -17,7 +17,6 @@ exports.create = (req, res) => {
   // Create a Cart
   const cart = {
     qty: req.body.qty,
-    productId: req.body.productId,
     userId: req.body.userId
   };
 
@@ -37,7 +36,11 @@ exports.create = (req, res) => {
 // Retrieve all Carts from the database.
 exports.findAll = (req, res) => {
 
-  Cart.findAll()
+  Cart.findAll({ 
+    include: [
+      "products"
+    ] 
+  })
   // { 
   //   include: [
   //     "users"

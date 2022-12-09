@@ -5,58 +5,31 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Category
 exports.create = (req, res) => {
 
-  // Validate request
+  // // Validate request
   // if (!req.body.name) {
-  //   res.status(400).send({
+  //     res.status(400).send({
   //     message: "Content can not be empty!"
-  //   });
-  //   return;
+  //     });
+  //     return;
   // }
 
-  // console.log(req.files);
-  // res.json({
-  //   message: "Successfully uploaded files"
-  // });
-
   // Create a Category
-  // const category = {
-  //   name: req.body.name,
-  //   image: req.body.image
-  // };
+  const category = {
+    name: req.body.name,
+    image: req.body.image
+  };
 
   // Save Category in the database
-  // Category.create(category)
-  //   .then(data => {
-  //     res.send(data);
-  //   })
-  //   .catch(err => {
-  //     res.status(500).send({
-  //       message:
-  //         err.message || "Some error occurred while creating the Category."
-  //     });
-  //   });
-
-  if(req.files === null) return res.status(400).json({msg: "No File Uploaded"});
-    const name = req.body.title;
-    const file = req.files.file;
-    const fileSize = file.data.length;
-    const ext = path.extname(file.name);
-    const fileName = file.md5 + ext;
-    const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
-    const allowedType = ['.png','.jpg','.jpeg'];
- 
-    if(!allowedType.includes(ext.toLowerCase())) return res.status(422).json({msg: "Invalid Images"});
-    if(fileSize > 5000000) return res.status(422).json({msg: "Image must be less than 5 MB"});
- 
-    file.mv(`./public/images/${fileName}`, async(err)=>{
-        if(err) return res.status(500).json({msg: err.message});
-        try {
-            await Product.create({name: name, image: us, url: url});
-            res.status(201).json({msg: "Product Created Successfuly"});
-        } catch (error) {
-            console.log(error.message);
-        }
+  Category.create(category)
+    .then(data => {
+      res.send(data);
     })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Category."
+      });
+    });
 
 };
 // exports.uploadFiles = (req, res) => {

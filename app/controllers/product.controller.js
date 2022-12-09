@@ -25,6 +25,7 @@ exports.create = (req, res) => {
     name: req.body.name,
     price: req.body.price,
     desc: req.body.desc,
+    cartId: req.body.cartId,
     categoryId: req.body.categoryId
   };
 
@@ -49,7 +50,6 @@ exports.findAll = (req, res) => {
 
   Product.findAll({ 
     include: [
-      "carts",
       "productGalleries"
     ] 
   })
