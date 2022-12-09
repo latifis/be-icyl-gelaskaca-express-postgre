@@ -16,7 +16,6 @@ exports.create = (req, res) => {
 
   // Create a Cart
   const cart = {
-    qty: req.body.qty,
     userId: req.body.userId
   };
 

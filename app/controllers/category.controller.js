@@ -5,6 +5,8 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Category
 exports.create = (req, res) => {
 
+  const photoUrl = req.protocol + "://" + req.get("host") + "/images/" + req.file.filename
+
   // // Validate request
   // if (!req.body.name) {
   //     res.status(400).send({
@@ -16,7 +18,7 @@ exports.create = (req, res) => {
   // Create a Category
   const category = {
     name: req.body.name,
-    image: req.body.image
+    image: photoUrl
   };
 
   // Save Category in the database
