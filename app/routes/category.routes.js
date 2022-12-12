@@ -39,7 +39,7 @@ module.exports = app => {
   });
 
   // Create a new Category
-  router.post("/", upload.single('profile'), categorys.create);
+  router.post("/", upload.single('image'), categorys.create);
 
   // Retrieve all Categorys
   router.get("/", categorys.findAll);
