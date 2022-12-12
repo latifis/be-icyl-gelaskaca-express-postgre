@@ -9,6 +9,9 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
+
+  const photoUrl = req.protocol + "://" + req.get("host") + "/images/" + req.file.filename
+
   // Save User to Database 
   User.create({
     username: req.body.username,
@@ -19,7 +22,8 @@ exports.signup = (req, res) => {
     birth_date: req.body.birth_date,
     age: req.body.age,
     address: req.body.address,
-    phone: req.body.phone
+    phone: req.body.phone,
+    image: photoUrl
   })
     .then(user => {
       if (req.body.roles) {
