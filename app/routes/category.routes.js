@@ -1,19 +1,24 @@
 const { authJwt } = require("../middleware");
 const categorys = require("../controllers/category.controller.js");
-const multer = require("multer");
-const path = require("path");
+
+const express = require('express');
+const path = require('path');
+const router = express.Router()
+
+const multer = require('multer');
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/image')
-  },
-  filename: function (req, file, cb) {
-    cb(
-      null,
-      path.parse(file.originalname).name + "-" +
-      Date.now() +
-      path.extname(file.originalname)
-    )
-  }
+    destination: (req, file, cb) => {
+        cb(null, 'public/images')
+    },
+    filename: (req, file, cb) => {
+        cb(
+            null,
+            path.parse(file.originalname).name + "-" +
+            Date.now() +
+            path.extname(file.originalname
+            )
+        )
+    }
 })
 
 const upload = multer({
@@ -34,7 +39,7 @@ module.exports = app => {
   });
 
   // Create a new Category
-  router.post("/", upload.array('photo', 8), categorys.create);
+  router.post("/", upload.single('profile'), categorys.create);
 
   // Retrieve all Categorys
   router.get("/", categorys.findAll);
